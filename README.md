@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Warp Blaster
 
-# Run and deploy your AI Studio app
+Warp Blaster is a high-speed, addictive space shooter game integrated with Base Mainnet for verifying player records via on-chain smart contracts. You are a Warp Blaster pilot defending the frontier against endless waves of alien invaders!
 
-This contains everything you need to run your app locally.
+## Gameplay Mechanics
 
-View your app in AI Studio: https://ai.studio/apps/76190f7d-86c7-4fc3-9167-d24eb5bac28f
+- **Mobile First / Touch Controls**: Move your ship with a virtual joystick and perform high-speed warps using swipe actions.
+- **Warp mechanic**: Instant teleportation abilities to dodge bullets, attack enemies with trail damage, and chain combos.
+- **Ship Classes**: Choose between Assault, Stealth, Heavy, or Speedster ships, each having different health, speed, damage, and warp cooldowns.
+- **Infinite Waves**: Battle increasingly difficult waves of enemies and gather score multipliers.
+- **On-chain Validation**: Submitting high scores directly via SIWE to the Base network.
 
-## Run Locally
+## On-Chain Integrations (Base Mainnet)
 
-**Prerequisites:**  Node.js
+- Uses Wagmi + Viem for wallet interactions.
+- Validates scores via EIP-712/SIWE.
+- Features ERC-8004 Trustless Agents protocol (MCP Server and A2A API integrations for AI agent capabilities).
+- Full ERC-8021 Transaction Attribution for automated revenue sharing and action tracking.
 
+## Technical Details
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Configured using React 19, Vite, Tailwind CSS, and HTML Canvas for performant rendering.
+- Custom Express Node.js Server handles MCP interactions and Vite SSR middleware.
+- Framer Motion animation logic for crisp UI transitions.
