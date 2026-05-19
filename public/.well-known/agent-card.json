@@ -27,6 +27,28 @@
       "description": "Main agent control API"
     }
   ],
+  "skills": [
+    {
+      "name": "get_race_status",
+      "description": "Get current race status"
+    },
+    {
+      "name": "start_race",
+      "description": "Start the race"
+    },
+    {
+      "name": "get_leaderboard",
+      "description": "Get leaderboard"
+    },
+    {
+      "name": "optimize_speed",
+      "description": "Optimize speed"
+    },
+    {
+      "name": "get_track_info",
+      "description": "Get track info"
+    }
+  ],
   "capabilities": [
     "warp-blasting",
     "high-speed-combat",

@@ -8,6 +8,18 @@ async function startServer() {
 
   app.use(express.json());
 
+  // CORS Middleware
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+    if (req.method === "OPTIONS") {
+      res.sendStatus(204);
+    } else {
+      next();
+    }
+  });
+
   // Agent API
   app.get("/api/agent", (req, res) => {
     res.json({
@@ -34,6 +46,38 @@ async function startServer() {
 
   app.post("/api/mcp", (req, res) => {
     try {
+      const method = req.body.method;
+
+      if (method === "initialize") {
+        return res.json({
+           protocolVersion: "2024-11-05",
+           capabilities: { prompts: {}, resources: {}, tools: {} },
+           serverInfo: { name: "Warp Blaster MCP Endpoint", version: "1.0.0" }
+        });
+      }
+
+      if (method === "tools/list") {
+        return res.json({
+          tools: [
+            { name: "get_race_status", description: "Get current race status", inputSchema: { type: "object", properties: {} } },
+            { name: "start_race", description: "Start the race", inputSchema: { type: "object", properties: {} } },
+            { name: "get_leaderboard", description: "Get leaderboard", inputSchema: { type: "object", properties: {} } },
+            { name: "optimize_speed", description: "Optimize speed", inputSchema: { type: "object", properties: {} } },
+            { name: "get_track_info", description: "Get track info", inputSchema: { type: "object", properties: {} } }
+          ]
+        });
+      }
+
+      if (method === "tools/call") {
+        return res.json({
+          content: [{ type: "text", text: `Executed tool ${req.body.params?.name}` }]
+        });
+      }
+
+      if (method === "prompts/list" || method === "resources/list") {
+        return res.json({ prompts: [], resources: [] });
+      }
+
       res.json({
         status: "success",
         message: "MCP command received",
