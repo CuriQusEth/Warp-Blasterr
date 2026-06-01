@@ -20,7 +20,7 @@ To connect your own AI Agent framework or client to the game operations, you can
 
 ### MCP Endpoint Connection Guide
 
-The agent provides a direct REST integration point through Next.js App Router endpoints.
+The agent provides a direct REST integration point through Vercel Serverless endpoints.
 
 **Endpoint URL:** `https://warp-blasterr.vercel.app/api/mcp`
 **Agent Configuration:** Check out the registry details in the `.well-known` file here: `https://warp-blasterr.vercel.app/.well-known/agent-card.json`
@@ -38,7 +38,7 @@ Once authenticated with MCP, you can interact with the following built-in functi
 
 - **Frontend**: React 19, Vite, Tailwind CSS, HTML Canvas, and Framer Motion.
 - **Blockchain**: Wagmi + Viem for wallet interactions, Base Mainnet.
-- **Backend / MCP Server**: Next.js 14 (App Router) APIs & Express Node.js Server SSR fallback handling model contexts protocol and Vite middleware.
+- **Backend / MCP Server**: Vercel Serverless Functions (`/api/*`) for cloud deployment & Express Node.js Server for local development.
 
 ## Running Locally
 
