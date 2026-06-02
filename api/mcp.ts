@@ -27,7 +27,7 @@ export default function handler(req: any, res: any) {
       const respondRpc = (result: any) => {
         return res.status(200).json({
           jsonrpc: "2.0",
-          id: id || null,
+          id: id !== undefined ? id : null,
           result
         });
       };
@@ -58,8 +58,12 @@ export default function handler(req: any, res: any) {
         });
       }
 
-      if (method === "prompts/list" || method === "resources/list") {
-        return respondRpc({ prompts: [], resources: [] });
+      if (method === "prompts/list") {
+        return respondRpc({ prompts: [] });
+      }
+
+      if (method === "resources/list") {
+        return respondRpc({ resources: [] });
       }
 
       return respondRpc({

@@ -51,7 +51,7 @@ async function startServer() {
       const respondRpc = (result: any) => {
         return res.json({
           jsonrpc: "2.0",
-          id: id || null,
+          id: id !== undefined ? id : null,
           result
         });
       };
@@ -82,8 +82,12 @@ async function startServer() {
         });
       }
 
-      if (method === "prompts/list" || method === "resources/list") {
-        return respondRpc({ prompts: [], resources: [] });
+      if (method === "prompts/list") {
+        return respondRpc({ prompts: [] });
+      }
+
+      if (method === "resources/list") {
+        return respondRpc({ resources: [] });
       }
 
       return respondRpc({
