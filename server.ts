@@ -46,10 +46,18 @@ async function startServer() {
 
   app.post("/api/mcp", (req, res) => {
     try {
-      const method = req.body.method;
+      const { method, id } = req.body || {};
+
+      const respondRpc = (result: any) => {
+        return res.json({
+          jsonrpc: "2.0",
+          id: id || null,
+          result
+        });
+      };
 
       if (method === "initialize") {
-        return res.json({
+        return respondRpc({
            protocolVersion: "2024-11-05",
            capabilities: { prompts: {}, resources: {}, tools: {} },
            serverInfo: { name: "Warp Blaster MCP Endpoint", version: "1.0.0" }
@@ -57,7 +65,7 @@ async function startServer() {
       }
 
       if (method === "tools/list") {
-        return res.json({
+        return respondRpc({
           tools: [
             { name: "get_race_status", description: "Get current race status", inputSchema: { type: "object", properties: {} } },
             { name: "start_race", description: "Start the race", inputSchema: { type: "object", properties: {} } },
@@ -69,16 +77,16 @@ async function startServer() {
       }
 
       if (method === "tools/call") {
-        return res.json({
+        return respondRpc({
           content: [{ type: "text", text: `Executed tool ${req.body.params?.name}` }]
         });
       }
 
       if (method === "prompts/list" || method === "resources/list") {
-        return res.json({ prompts: [], resources: [] });
+        return respondRpc({ prompts: [], resources: [] });
       }
 
-      res.json({
+      return respondRpc({
         status: "success",
         message: "MCP command received",
         agent: "Warp Blaster Orchestrator",
@@ -86,7 +94,11 @@ async function startServer() {
         payload: req.body
       });
     } catch (error) {
-      res.status(400).json({ error: "Invalid MCP request" });
+      res.status(400).json({
+        jsonrpc: "2.0",
+        id: null,
+        error: { code: -32700, message: "Parse error" }
+      });
     }
   });
 

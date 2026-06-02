@@ -22,10 +22,18 @@ export default function handler(req: any, res: any) {
   if (req.method === 'POST') {
     try {
       const body = req.body || {};
-      const method = body.method;
+      const { method, id } = body;
+
+      const respondRpc = (result: any) => {
+        return res.status(200).json({
+          jsonrpc: "2.0",
+          id: id || null,
+          result
+        });
+      };
 
       if (method === "initialize") {
-        return res.status(200).json({
+        return respondRpc({
            protocolVersion: "2024-11-05",
            capabilities: { prompts: {}, resources: {}, tools: {} },
            serverInfo: { name: "Warp Blaster MCP Endpoint", version: "1.0.0" }
@@ -33,7 +41,7 @@ export default function handler(req: any, res: any) {
       }
 
       if (method === "tools/list") {
-        return res.status(200).json({
+        return respondRpc({
           tools: [
             { name: "get_race_status", description: "Get current race status", inputSchema: { type: "object", properties: {} } },
             { name: "start_race", description: "Start the race", inputSchema: { type: "object", properties: {} } },
@@ -45,16 +53,16 @@ export default function handler(req: any, res: any) {
       }
 
       if (method === "tools/call") {
-        return res.status(200).json({
+        return respondRpc({
           content: [{ type: "text", text: `Executed tool ${body.params?.name}` }]
         });
       }
 
       if (method === "prompts/list" || method === "resources/list") {
-        return res.status(200).json({ prompts: [], resources: [] });
+        return respondRpc({ prompts: [], resources: [] });
       }
 
-      return res.status(200).json({
+      return respondRpc({
         status: "success",
         message: "MCP command received",
         agent: "Warp Blaster Orchestrator",
@@ -62,7 +70,11 @@ export default function handler(req: any, res: any) {
         payload: body
       });
     } catch (error) {
-      return res.status(400).json({ error: "Invalid MCP request" });
+      return res.status(400).json({
+        jsonrpc: "2.0",
+        id: null,
+        error: { code: -32700, message: "Parse error" }
+      });
     }
   }
 
