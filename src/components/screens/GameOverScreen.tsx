@@ -1,11 +1,14 @@
 import { motion } from 'motion/react';
 import { useGameStore } from '../../store/gameStore';
-import { useSignMessage } from 'wagmi';
+import { useSignMessage, useSendTransaction } from 'wagmi';
+import { parseEther } from 'viem';
 import { getAttributionData } from '../../lib/erc8021';
+import { Sun } from 'lucide-react';
 
 export default function GameOverScreen() {
   const { setScreen, score, wave, bestScore } = useGameStore();
   const { signMessage } = useSignMessage();
+  const { sendTransaction } = useSendTransaction();
 
   const handleRecordOnChain = () => {
     const attr = getAttributionData();
@@ -18,6 +21,14 @@ export default function GameOverScreen() {
     } catch(e) {
       alert("SIWE check & recorded on Base Mainnet! (Mocked)");
     }
+  };
+
+  const handleSendGM = () => {
+    sendTransaction({
+      to: '0xcD0dd3716C5561De47a24949335dF8a8CD8F71a3',
+      value: parseEther('0'),
+      data: '0x'
+    });
   };
 
   return (
@@ -59,8 +70,16 @@ export default function GameOverScreen() {
             onClick={handleRecordOnChain}
             className="py-3 px-4 rounded-lg bg-gradient-to-r from-[#00f3ff] to-[#0066ff] text-black font-black text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(0,243,255,0.4)]"
           >
-            Record on Base
+            Record This Run on-chain
           </motion.button>
+
+          <button
+            onClick={handleSendGM}
+            className="w-full justify-center px-3 py-3 rounded-lg bg-[#E8A020]/20 hover:bg-[#E8A020]/30 border border-[#E8A020]/40 text-[#E8A020] transition-colors flex items-center gap-2 font-['Cinzel'] text-xs font-bold"
+          >
+            <Sun size={16} />
+            Say GM
+          </button>
           
           <motion.button
             whileHover={{ scale: 1.02 }}

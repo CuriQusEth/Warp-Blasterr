@@ -1,1 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Rajdhani", sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+  --font-cinzel: "Cinzel", serif;
+
+  --color-neon-cyan: #00ffff;
+  --color-neon-magenta: #ff00ff;
+  --color-neon-purple: #bb00ff;
+  --color-neon-orange: #ff9900;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #050510;
+  color: #fff;
+  overscroll-behavior: none;
+  font-family: var(--font-sans);
+}

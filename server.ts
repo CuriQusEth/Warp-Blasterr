@@ -59,7 +59,11 @@ async function startServer() {
       if (method === "initialize") {
         return respondRpc({
            protocolVersion: "2024-11-05",
-           capabilities: { prompts: {}, resources: {}, tools: {} },
+           capabilities: { 
+             prompts: { listChanged: false }, 
+             resources: { listChanged: false, subscribe: false }, 
+             tools: { listChanged: false } 
+           },
            serverInfo: { name: "Warp Blaster MCP Endpoint", version: "1.0.0" }
         });
       }
