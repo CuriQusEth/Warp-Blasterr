@@ -25,6 +25,10 @@ async function startServer() {
     res.json({
       name: "Warp Blaster Orchestrator",
       status: "active",
+      network: "base-mainnet",
+      hardfork: "denim",
+      blockTime: "200ms",
+      architecture: "canonical-200ms-native-blocks",
       wallet: "0x29536D0bc1004ab274c4F0F59734Ad74D4559b7B",
       platform: "Warp Blaster",
       version: "1.0.0"
@@ -38,8 +42,11 @@ async function startServer() {
       version: "1.0.0",
       name: "Warp Blaster MCP Endpoint",
       status: "active",
-      description: "Active MCP server for Warp Blaster Orchestrator Agent",
-      capabilities: ["warp-blasting", "high-speed-combat", "multi-wave-management"],
+      network: "base-mainnet",
+      hardfork: "denim",
+      blockTime: "200ms",
+      description: "Active MCP server for Warp Blaster Orchestrator Agent on Base Denim Mainnet",
+      capabilities: ["warp-blasting", "high-speed-combat", "multi-wave-management", "denim-200ms-blocks"],
       timestamp: new Date().toISOString()
     });
   });

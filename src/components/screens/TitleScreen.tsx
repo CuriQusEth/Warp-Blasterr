@@ -46,8 +46,8 @@ export default function TitleScreen() {
         <h1 className="text-5xl md:text-7xl font-black italic tracking-tighter bg-gradient-to-r from-white to-[#888] bg-clip-text text-transparent uppercase mb-2 drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]">
           WARP BLASTER
         </h1>
-        <div className="flex items-center gap-2 text-[10px] text-[#00f3ff] uppercase tracking-widest font-bold mb-12">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#00f3ff] animate-pulse"></span> Base Mainnet Active
+        <div className="flex items-center gap-2 text-[10px] text-[#00f3ff] uppercase tracking-widest font-bold mb-12 bg-[#00f3ff]/10 border border-[#00f3ff]/30 px-3 py-1 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00f3ff] animate-pulse"></span> Base Mainnet (Denim • 200ms Blocks)
         </div>
 
         <div className="flex flex-col gap-4 w-full px-8 max-w-xs">

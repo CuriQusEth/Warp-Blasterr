@@ -28,7 +28,10 @@ export default function GameScreen() {
       {/* Top HUD */}
       <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start pointer-events-none z-10">
         <div className="flex flex-col">
-           <div className="text-[10px] uppercase tracking-[0.3em] text-[#00f3ff]">Wave {wave}</div>
+           <div className="text-[10px] uppercase tracking-[0.3em] text-[#00f3ff] flex items-center gap-1.5">
+             Wave {wave}
+             <span className="text-[8px] bg-[#00f3ff]/10 border border-[#00f3ff]/30 px-1.5 py-0.5 rounded text-[#00f3ff]">DENIM 200ms</span>
+           </div>
            <div className="text-4xl font-black italic tracking-tighter text-white drop-shadow-[0_0_10px_#00f3ff]">{score}</div>
         </div>
         
@@ -49,7 +52,7 @@ export default function GameScreen() {
           onClick={handleSayGM}
           className="pointer-events-auto px-6 py-2.5 bg-gradient-to-r from-[#00f3ff] to-[#0066ff] text-black font-black text-xs uppercase tracking-widest rounded-full hover:scale-105 shadow-[0_0_15px_rgba(0,243,255,0.4)]"
         >
-          SAY GM (Base)
+          SAY GM (Base Denim)
         </button>
       </div>
     </div>

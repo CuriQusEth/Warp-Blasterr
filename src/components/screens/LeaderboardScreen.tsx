@@ -26,9 +26,12 @@ export default function LeaderboardScreen() {
           <h2 className="text-2xl font-black italic tracking-tighter text-white drop-shadow-[0_0_10px_#ff00ff] uppercase">
             Top Pilots
           </h2>
-          <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mt-1">Verified on Base Mainnet</p>
+          <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest mt-1">Verified on Base Mainnet (Denim • 200ms Blocks)</p>
         </div>
-        <span className="text-[10px] text-[#00f3ff] border border-[#00f3ff]/30 px-3 py-1 rounded bg-[#00f3ff]/10">Global</span>
+        <span className="text-[10px] text-[#00f3ff] border border-[#00f3ff]/30 px-3 py-1 rounded bg-[#00f3ff]/10 flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#00f3ff] animate-pulse"></span>
+          Denim 200ms
+        </span>
       </div>
 
       <div className="relative z-10 flex-1 overflow-y-auto space-y-3">
@@ -56,7 +59,7 @@ export default function LeaderboardScreen() {
           </div>
           <div className="text-[10px] font-bold uppercase tracking-widest text-[#ff00ff]">Trustless Agents</div>
         </div>
-        <p className="text-[10px] text-gray-400 leading-relaxed">ERC-8004 Protocol Integrated. Real-time attribution active for all warp events.</p>
+        <p className="text-[10px] text-gray-400 leading-relaxed">ERC-8004 Protocol Integrated on Base Denim Mainnet. 200ms sub-second canonical settlement active for all warp events.</p>
       </div>
     </div>
   );

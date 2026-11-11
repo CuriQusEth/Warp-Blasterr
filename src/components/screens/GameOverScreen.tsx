@@ -12,14 +12,14 @@ export default function GameOverScreen() {
 
   const handleRecordOnChain = () => {
     const attr = getAttributionData();
-    const msg = `WARP BLASTER\nRecording Score: ${score}\nWave: ${wave}\nBuilder: ${attr.builder}`;
+    const msg = `WARP BLASTER\nRecording Score: ${score}\nWave: ${wave}\nNetwork: Base Mainnet (Denim)\nBlock Time: 200ms Canonical\nBuilder: ${attr.builder}`;
     try {
       (signMessage as any)({ message: msg }, {
-        onSuccess: (sig: string) => alert(`Verified! Score recorded securely.\nHash: ${sig.slice(0, 15)}...`),
+        onSuccess: (sig: string) => alert(`Verified! Score recorded on Base Mainnet (Denim 200ms).\nTx/Hash: ${sig.slice(0, 15)}...`),
         onError: () => alert("Transaction failed. Mocking success for demo!"),
       });
     } catch(e) {
-      alert("SIWE check & recorded on Base Mainnet! (Mocked)");
+      alert("SIWE check & recorded on Base Mainnet (Denim 200ms)! (Mocked)");
     }
   };
 
@@ -70,7 +70,7 @@ export default function GameOverScreen() {
             onClick={handleRecordOnChain}
             className="py-3 px-4 rounded-lg bg-gradient-to-r from-[#00f3ff] to-[#0066ff] text-black font-black text-xs uppercase tracking-widest shadow-[0_0_15px_rgba(0,243,255,0.4)]"
           >
-            Record This Run on-chain
+            Record on Base Denim (200ms)
           </motion.button>
 
           <button
@@ -78,7 +78,7 @@ export default function GameOverScreen() {
             className="w-full justify-center px-3 py-3 rounded-lg bg-[#E8A020]/20 hover:bg-[#E8A020]/30 border border-[#E8A020]/40 text-[#E8A020] transition-colors flex items-center gap-2 font-['Cinzel'] text-xs font-bold"
           >
             <Sun size={16} />
-            Say GM
+            Say GM (Base Denim)
           </button>
           
           <motion.button

@@ -13,8 +13,11 @@ export default function handler(req: any, res: any) {
       version: "1.0.0",
       name: "Warp Blaster MCP Endpoint",
       status: "active",
-      description: "Active MCP server for Warp Blaster Orchestrator Agent",
-      capabilities: ["warp-blasting", "high-speed-combat", "multi-wave-management"],
+      network: "base-mainnet",
+      hardfork: "denim",
+      blockTime: "200ms",
+      description: "Active MCP server for Warp Blaster Orchestrator Agent on Base Denim Mainnet",
+      capabilities: ["warp-blasting", "high-speed-combat", "multi-wave-management", "denim-200ms-blocks"],
       timestamp: new Date().toISOString()
     });
   }

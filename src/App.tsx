@@ -31,14 +31,18 @@ export default function App() {
       {screen === 'LEADERBOARD' && <LeaderboardScreen />}
       
       {isConnected && (
-        <div className="absolute top-4 left-4 z-50">
+        <div className="absolute top-4 left-4 z-50 flex items-center gap-2">
           <button
             onClick={sendGMTransaction}
             className="px-3 py-2 rounded-lg bg-[#E8A020]/20 hover:bg-[#E8A020]/30 border border-[#E8A020]/40 text-[#E8A020] transition-colors flex items-center gap-2 font-['Cinzel'] text-xs font-bold"
           >
             <Sun size={16} />
-            Say GM
+            Say GM (Base Denim)
           </button>
+          <div className="px-2.5 py-1.5 rounded-lg bg-[#00f3ff]/10 border border-[#00f3ff]/30 text-[#00f3ff] text-[10px] font-mono flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#00f3ff] animate-ping" />
+            DENIM • 200ms
+          </div>
         </div>
       )}
     </div>

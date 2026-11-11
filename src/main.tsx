@@ -8,10 +8,22 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
 
+// Base Mainnet with Denim (200ms canonical native blocks)
+const baseMainnetDenim = {
+  ...base,
+  name: 'Base Mainnet (Denim)',
+  rpcUrls: {
+    ...base.rpcUrls,
+    default: {
+      http: ['https://mainnet.base.org'],
+    },
+  },
+};
+
 const wagmiConfig = createConfig({
-  chains: [base],
+  chains: [baseMainnetDenim],
   transports: {
-    [base.id]: http(),
+    [base.id]: http('https://mainnet.base.org'),
   },
 });
 
